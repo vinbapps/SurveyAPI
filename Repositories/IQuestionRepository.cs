@@ -6,10 +6,10 @@ namespace SurveyAPI.Repositories
 {
     public interface IQuestionRepository
     {
-        Task<IEnumerable<Question>> GetQuestions();
-        Task<Question> GetQuestion(int id);
-        Task<Question> CreateQuestion(Question question);
-        Task UpdateQuestion(Question question);
-        Task DeleteQuestion(int id);
+        Task<IEnumerable<Question>> Get();
+        Task<Question> Get(int id);
+        Task<Question> Create(Question question);
+        Task Update(Question question);
+        Task Delete(int id);
     }
 }

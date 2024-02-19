@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "BookAPI": {
+    "SurveyAPI": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",

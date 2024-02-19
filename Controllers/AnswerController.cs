@@ -1,4 +1,5 @@
-﻿using SurveyAPI.Models;
+﻿// SurveyAPI.Controllers.AnswerController.cs
+using SurveyAPI.Models;
 using SurveyAPI.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -26,26 +27,26 @@ namespace SurveyAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Answer>> GetAnswer(int id)
         {
-            var Answer = await _answerRepository.GetById(id);
-            if (Answer == null)
+            var answer = await _answerRepository.GetById(id);
+            if (answer == null)
             {
                 return NotFound();
             }
 
-            return Answer;
+            return answer;
         }
 
         [HttpPost]
-        public async Task<ActionResult<Answer>>PostAnswer([FromBody] Answer answer)
+        public async Task<ActionResult<Answer>> PostAnswer([FromBody] Answer answer)
         {
             var newAnswer = await _answerRepository.Add(answer);
             return CreatedAtAction(nameof(GetAnswers), new { id = newAnswer.Id }, newAnswer);
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public async Task<ActionResult> PutAnswer(int id, [FromBody] Answer answer)
         {
-            if(id != answer.Id)
+            if (id != answer.Id)
             {
                 return BadRequest();
             }
@@ -53,18 +54,16 @@ namespace SurveyAPI.Controllers
             await _answerRepository.Update(answer);
 
             return NoContent();
-
-
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteAnswer (int id)
+        public async Task<ActionResult> DeleteAnswer(int id)
         {
-            var AnswerToDelete = await _answerRepository.GetById(id);
-            if (AnswerToDelete == null)
+            var answerToDelete = await _answerRepository.GetById(id);
+            if (answerToDelete == null)
                 return NotFound();
 
-            await _answerRepository.Delete(AnswerToDelete.Id);
+            await _answerRepository.Delete(answerToDelete.Id);
             return NoContent();
         }
     }

@@ -10,8 +10,8 @@ namespace SurveyAPI.Models
     {
         public int Id { get; set; }
         public string FullName { get; set; }
-        public string LevelofApprenticeship { get; set; }
-        public string Jobrole { get; set; }
+        public string LevelOfApprenticeship { get; set; }
+        public string JobRole { get; set; }
         public string Organisation { get; set; } 
         public string Email { get; set; }
         
